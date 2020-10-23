@@ -1,13 +1,22 @@
 const { resolve } = require('path')
 //导入打包html文件的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+//将css单独抽取出来的插件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+// 压缩css的插件
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
-  entry: './src/js/app.js',
+  // entry: ['./src/js/app.js', './src/index.html'],
+  // entry: './src/js/app.js',
+  entry: {
+    haha: './src/js/app.js'
+  },
   output: {
     filename: './js/app.js',
-    path: resolve(__dirname, 'dist')
+    path: resolve(__dirname, '../dist')
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       // 处理css
@@ -18,7 +27,30 @@ module.exports = {
       //处理less
       {
         test: /\.less$/, //找到项目中引入的所有的css文件
-        use: ['style-loader', 'css-loader', 'less-loader'] // 先将less转成css. css-loader将css转成commonjs的形式.然后使用style-loader将样式添加到页面上
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('postcss-preset-env')({
+                  autoprefixer: {
+                    flexbox: 'no-2009' // display:flex之前个时期写的是display:flexbox. 这种写法现在不用了.所以要写no-2009
+                  },
+                  stage: 3 // 兼容性程度: 0, 1, 2, 3 值越大,表示兼容的程度越高
+                }),
+                require('postcss-normalize')()
+              ],
+              sourceMap: true //也要生成一个map文件
+            }
+          },
+          'less-loader'
+        ]
+        // 先将less转成css. css-loader将css转成commonjs的形式.然后使用style-loader将样式添加到页面上
+        // MiniCssExtractPlugin.loader 将css以外链的形式添加到页面上
       },
       // eslint检查
       {
@@ -65,7 +97,7 @@ module.exports = {
             options: {
               limit: 8192, // 是否转为base64的界定值
               outputPath: './imgs', // 决定了打包后的文件放在那里
-              publicPath: '../dist/imgs', // 声明打包之后的文件,访问这个文件的时候的路径
+              publicPath: '../imgs', // 声明打包之后的文件,访问这个文件的时候的路径
               name: '[hash:5].[ext]' // 将打包后的图片,重命名
             }
           }
@@ -78,12 +110,37 @@ module.exports = {
         use: {
           loader: 'html-loader'
         }
+      },
+      // 处理其他类型的文件(字体图标)
+      {
+        test: /\.(eot|svg|woff|woff2|ttf|mp3|mp4|avi)$/, // 处理其他资源
+        loader: 'file-loader',
+        options: {
+          outputPath: 'media',
+          name: '[hash:8].[ext]'
+        }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }]
+      },
+      cssProcessorOptions: {
+        // 解决没有source map问题
+        map: {
+          inline: false,
+          annotation: true
+        }
+      }
     })
-  ]
+  ],
+  devtool: 'cheap-module-source-map'
 }

@@ -13,6 +13,8 @@ import data from '../json/data.json'
 // 注意引入css.import 后面直接写路径即可. 后缀名不可以忽略
 import '../css/index.css'
 import '../less/app.less'
+//引入字体样式文件
+import '../less/iconfont.less'
 
 foo()
 bar()
