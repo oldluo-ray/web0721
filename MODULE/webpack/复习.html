@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      // 复习 :
+    //    1. 模块化: 
+            // 1.1 commonjs 
+            // 如果在浏览器中使用commonjs.浏览器不认识commonjs语法,所以需要使用第三方包browserify. 将commonjs转成浏览器认识的语法
+            // 导出: module.exports / exports
+            // 导入: require('./自定义包') require('第三方包名')
+            // 1.2 es6
+            // 注意: 浏览器依然不认识es6的模块化语法.需要使用babel将es6的语法转成commonjs.然后再通过browserify转成浏览器认识的语法
+            // 导出: 分别导出: export 值   统一导出 export {值, 值} 默认导出 export default 值
+            // 注意: export default 在一个模块中只能写一次
+            // 导入: 如果是分别导出或统一导出 import {值} from '路径/包名'
+            //       如果是默认导出   import 变量名 from '路径/包名'
+
+
+        // 2. webpack
+            //  就是将前端代码(js,css,html....)打包成静态资源的打包工具
+            //  五个核心概念: entry(入口), output(输出), loader(加载器), plugin(插件), mode(模式) 
+
+            // entry: 指定入口文件
+            // output: 指定打包后发文件放在那里
+            // loader: webpack只能处理js和json.如果需要处理其他文件,需要使用loader
+            // plugin: 如果loader不能完成某个功能,可以使用插件
+            // mode: 指定环境 development(开发环境) production(生产环境)
+
+            // webpack配置文件的名称: webpack.config.js (定义在项目的根目录)
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
