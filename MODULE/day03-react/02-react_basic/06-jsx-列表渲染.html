@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 10px solid blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+    <!-- 注意: 1. 要先引react, 后引react-dom 2. 如果开发网页使用react-dom. 如果开发原生app,使用react-native -->
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        let arr = [{
+            name: '呸hua',
+            age: 38,
+            gender: '不详细',
+            hobby: '抽烟喝酒植发'
+        },{ name: '静哥',
+            age:48,
+            gender: '男',
+            hobby: '京城会所'}]
+
+
+        // let arr1 = [<li>Peihua</li>, <li>jg</li>]
+
+        const arr1 = arr.map((item,index)=>{
+            return <li key={index}><div>名字: {item.name}</div><div>年龄: {item.age}</div><div>性别: {item.gender}</div><div>爱好: {item.hobby}</div></li>
+        })
+
+        let ul = <ul>{
+           arr1
+        }</ul>
+
+        ReactDOM.render(ul, document.getElementById('root'))
+
+
+        // 总结: 
+        // 1. react列表渲染,都是使用数组的map方法,得到一个包含了jax标签的数组.直接渲染这个数组实现
+        // 2. 在执行map的过程中,最外面的那个标签,必须加一个key属性,可以属性的值要求是唯一的.
+
+    </script>
+    
+
+
+    
+</body>
+</html>

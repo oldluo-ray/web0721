@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 10px solid blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+    <!-- 注意: 1. 要先引react, 后引react-dom 2. 如果开发网页使用react-dom. 如果开发原生app,使用react-native -->
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        // let h1
+        // 需求: 如果年龄大于18,可以看大人看的动画片. 否则只能看小朋友看的动画片
+        let age = 17
+        //普通的if判断
+        // if(age >= 18){
+        //     h1 = <h1>大人看的动画片</h1>
+        // }else{
+        //     h1 = <h1>小朋友看的动画片</h1>
+        // }
+
+        //三元 
+        // h1 = age >= 18 ? <h1>大人看的动画片</h1> :  <h1>小朋友看的动画片</h1>
+
+
+        // 工作中经常使用与逻辑实现条件判断
+      // 注意: 如果是有条数据,不是渲染a,就是渲染b的时候,应该使用if或三元
+      // 还有一些情况是,有一条数据,要么是渲染,要么就不渲染
+
+        // 需求: 如果大于18岁,展示酒的信息
+        let arr = ['红酒', '黄酒', '白酒', '啤酒', '鸡尾酒']
+        const h1 = <h1>{age >= 18 && arr}</h1>
+
+        ReactDOM.render(h1, document.getElementById('root'))
+
+
+
+
+        // 小结: 
+        // 如果要在jsx中插入数据,可以直接在要插入数据的地方写{}
+        // 插值表达式中,可以写任何类型的表达式
+            // 常见的表达式: 字面量, 变量, 常量, 数组,函数,对象,运算,三元. 注意不能写if和循环
+        // 如果要给属性的值,插入数据,直接将值写成{}
+
+
+        // 注意: 插值表达式中,可以传入对象和函数,但是,不要直接去渲染.如果渲染的时候,插值表达式写了对象和函数,就会报错.因为react不知道如何将对象和函数渲染到页面上
+       
+    </script>
+    
+
+
+    
+</body>
+</html>

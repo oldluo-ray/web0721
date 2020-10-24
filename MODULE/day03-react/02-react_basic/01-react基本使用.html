@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- 注意: 1. 要先引react, 后引react-dom 2. 如果开发网页使用react-dom. 如果开发原生app,使用react-native -->
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+
+
+    <script>
+
+
+        // 创建元素(不是真正的dom元素,是一个react元素(虚拟dom))
+        const h1 = React.createElement('h1',null, '我是用react创建出来的h1')
+        console.log(h1)
+        // 测试的时候,可以用.上线不能用
+        // console.dir(root)
+
+        //将react元素,转成真正dom元素,然后渲染到页面上
+        // ReactDOM.render(react元素/react组件, 渲染的位置)
+        ReactDOM.render(h1, document.getElementById('root'))
+
+    </script>
+</body>
+</html>

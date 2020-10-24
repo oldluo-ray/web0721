@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        1. webpack配置文件要写两个: 
+         1.1 开发环境: webpack.dev.js  需要配置devserver. 帮助开发者,自动编译刷新
+         1.2 生产环境: webpack.prod.js 不需要配置devserver
+
+         开发环境,配置了devserver.实际上启动之后,在内存中创建了dist文件夹
+         生产环境, 当我们将所有代码写完,测试完毕.直接打包项目,得到硬盘上的一个dist文件夹,直接将这个文件夹交给运营上线
+
+
+         2. 当我们配置了两个配置文件. 启动的时候,就不能直接使用webpack
+         需要在package.json中.配置scripts 
+
+         {
+             "scripts": {
+                 "start": "webpack-dev-server --config ./config/webpack.dev.js",
+                 "build": "webpack --config ./config/webpack.prod.js"
+             }
+         }
+
+         //注意: 如果配置了package.json. 开发环境启动项目,以及生产环境打包dist文件夹.都不需要直接输入webpack/webpackdevserver. 而是使用npm 
+         npm run start ----简写----> npm start
+         npm run build 
+
+    </script>
+</body>
+</html>
