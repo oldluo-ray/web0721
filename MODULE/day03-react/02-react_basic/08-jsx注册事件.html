@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+    <!-- 注意: 1. 要先引react, 后引react-dom 2. 如果开发网页使用react-dom. 如果开发原生app,使用react-native -->
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+        // react-jsx中注册事件,事件名和dom中是一样的.只是需要写成小驼峰命名法
+        // let btn = <button onClick={()=>{
+        //     console.log('明天放假了,好开心啊~~~')
+        // }}>按钮</button>
+        let link = <a href="" onClick={(e)=>{
+            console.log('a标签被点击了')
+            // return false //在react中,阻止默认行为不能使用return false
+            console.log(e) // 注意: 这个事件对象,不是dom中真正的事件对象.是react封装了一层.叫做合成事件
+            console.log(e.clientX)
+            e.persist() //注意: 默认在控制台,打印事件对象,看不到属性的值,但是可以通过代码获取到.如果非要在控制台看, 调用persist(这个函数就可以)
+            e.preventDefault()
+        }}>点击</a>
+        ReactDOM.render(link, document.getElementById('root'))
+
+
+
+    </script>
+    
+
+
+    
+</body>
+</html>

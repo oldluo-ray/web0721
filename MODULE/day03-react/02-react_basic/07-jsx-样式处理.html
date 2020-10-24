@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 10px solid blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+    <!-- 注意: 1. 要先引react, 后引react-dom 2. 如果开发网页使用react-dom. 如果开发原生app,使用react-native -->
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        let div = <div className="box" style={{color: 'red',backgroundColor:'green'}}>134</div>
+
+        ReactDOM.render(div, document.getElementById('root'))
+
+
+
+    </script>
+    
+
+
+    
+</body>
+</html>
