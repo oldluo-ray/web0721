@@ -22,7 +22,9 @@ export default class Item extends Component {
   }
   render() {
     // console.log(this.props.todo)
+
     const { todo } = this.props
+ 
     return (
       <li onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
         <label>
