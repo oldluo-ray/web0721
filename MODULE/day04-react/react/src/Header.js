@@ -7,7 +7,7 @@ export default class Header extends Component {
     content: '文本域',
     select: '2',
     checked: true,
-    radio: true
+    radio: ['男', '女']
   }
 
   // change事件的事件处理函数
@@ -53,8 +53,7 @@ export default class Header extends Component {
   // 函数柯里化
   handle = name => e => {
     // 判断name是否是checked,如果是就应该获取checked属性,否则一律都是value
-    const value =
-      name === 'checked' || name === 'radio' ? e.target.checked : e.target.value
+    const value = name === 'checked' ? e.target.checked : e.target.value
     // const value = e.target.value
     this.setState({
       [name]: value
@@ -120,16 +119,16 @@ export default class Header extends Component {
 
         {/*  单选选框 */}
         {/* <input
-          type='radio'
-          checked={this.state.radio}
-          onChange={this.handle('radio')}
           name='gender'
+          type='radio'
+          value={'女'}
+          onChange={this.handle('radio')}
         /> */}
         {/*  单选选框 */}
         {/* <input
           name='gender'
           type='radio'
-          checked={this.state.radio}
+          value={'男'}
           onChange={this.handle('radio')}
         /> */}
       </div>
