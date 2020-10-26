@@ -32,3 +32,8 @@ li:before {
 li:last-child {
   border-bottom: none;
 }
+
+.done {
+  text-decoration: line-through;
+  color: #ccc;
+}
