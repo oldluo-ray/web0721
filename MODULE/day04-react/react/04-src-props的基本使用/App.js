@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Test from './Test'
 export default class App extends Component {
   state = {
     msg: 'app里面的数据'
@@ -8,7 +9,12 @@ export default class App extends Component {
     return (
       <div>
         {/* 组件经常使用组件外部的数据,如何将外部数据传递给组件呢? 使用标签属性的方式传递 */}
-        <Header></Header>
+        <Header
+          msg={this.state.msg}
+          yyy={'坚持一下,还有几分中下课'}
+          xxx={{ name: 'zs' }}
+          component={Test}
+        ></Header>
       </div>
     )
   }
