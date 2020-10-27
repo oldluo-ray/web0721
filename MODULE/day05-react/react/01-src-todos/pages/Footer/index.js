@@ -6,20 +6,24 @@ export default class Footer extends Component {
     this.props.updateTodoIsDone()
   }
   render() {
-    let { allTotal, doneTotal,delAllDone } = this.props
+    let { allTotal, doneTotal, delAllDone } = this.props
     return (
       <div className='todo-footer'>
         <label>
           <input
             type='checkbox'
-            checked={allTotal === doneTotal}
+            // 如果allTotal为0,那么也不要选中
+            // 如果allTotal不为0, 并且allTotal和doneTotal相同的时候,就可以选中
+            checked={allTotal !== 0 && allTotal === doneTotal}
             onChange={this.handleAllChecked}
           />
         </label>
         <span>
           <span>已完成{doneTotal}</span> / 全部{allTotal}
         </span>
-        <button className='btn btn-danger' onClick={delAllDone}>清除已完成任务</button>
+        <button className='btn btn-danger' onClick={delAllDone}>
+          清除已完成任务
+        </button>
       </div>
     )
   }
