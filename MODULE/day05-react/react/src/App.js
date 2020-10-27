@@ -45,12 +45,31 @@ export default class App extends Component {
       todos: newTodos
     })
   }
+
+  //定义一个函数,专门用来,接收item组件传过来的checked.
+  updateTodo = (checked, id) => {
+    // console.log(checked, id)
+    let { todos } = this.state
+    let newTodos = [...todos]
+
+    // 遍历newTodos.根据id找到要修改的那条数据,然后将这条数据的isDone改成checked的值
+    // 调用setState
+    newTodos.forEach(item => {
+      if (item.id === id) {
+        item.isDone = checked
+      }
+    })
+
+    this.setState({
+      todos: newTodos
+    })
+  }
   render() {
     return (
       <div className='todo-container'>
         <div className='todo-wrap'>
           <Header addTodo={this.addTodo}></Header>
-          <List todos={this.state.todos}></List>
+          <List todos={this.state.todos} updateTodo={this.updateTodo}></List>
           <Footer></Footer>
         </div>
       </div>
