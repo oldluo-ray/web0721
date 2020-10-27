@@ -80,7 +80,35 @@ export default class App extends Component {
       todos: newTodos
     })
   }
+
+  // 定义这个updateTodoIsDone函数,当footer组件中,checkbox被点击了之后,调用这个函数,去修改todos里面的数据
+  updateTodoIsDone = () => {
+    // console.log(1)
+    // 如果allcheckbox的值是true,那么都改成true.
+    // 如果allcheckbox的值是false,那么都改成false
+    // 1.判断allcheckbox的值是true还是false
+    //如果列表中每一个复选框,都是选中的.那么全选肯定也是选中的
+    // 如果列表中有一个复选框,是不选中的.那么全选肯定是不选中
+    // every(数组中所有项都符合条件,返回true) / some (数组中有一个符合条件,就返回true)
+    let { todos } = this.state
+    let newTodos = [...todos]
+    let allCheckIsDone = newTodos.every(item => item.isDone)
+    // console.log(allCheckIsDone)
+
+    //如果allCheckIsDone的值是false, 接下啦的值要变成true.(每一个列表项的值应该是true)
+    newTodos.forEach(item => {
+      item.isDone = !allCheckIsDone
+    })
+
+    this.setState({
+      todos: newTodos
+    })
+  }
   render() {
+    // 计算已经完成多少个任务,以及当前总共有多少个任务
+    const allTotal = this.state.todos.length
+    const doneTotal = this.state.todos.filter(item => item.isDone).length
+
     return (
       <div className='todo-container'>
         <div className='todo-wrap'>
@@ -90,7 +118,11 @@ export default class App extends Component {
             updateTodo={this.updateTodo}
             delTodo={this.delTodo}
           ></List>
-          <Footer></Footer>
+          <Footer
+            allTotal={allTotal}
+            doneTotal={doneTotal}
+            updateTodoIsDone={this.updateTodoIsDone}
+          ></Footer>
         </div>
       </div>
     )
