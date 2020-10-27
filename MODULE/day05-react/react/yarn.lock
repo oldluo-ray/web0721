@@ -8741,6 +8741,11 @@ public-encrypt@^4.0.0:
     randombytes "^2.0.1"
     safe-buffer "^5.1.2"
 
+pubsub-js@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/pubsub-js/download/pubsub-js-1.9.0.tgz#fa19de437f41221e95b6bd4dc4c745b25b92c0ab"
+  integrity sha1-+hneQ39BIh6Vtr1NxMdFsluSwKs=
+
 pump@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"

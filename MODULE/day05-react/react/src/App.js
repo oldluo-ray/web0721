@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
-import Far from './pages/Far'
-// const context = React.createContext()
-// const { Provider, Consumer } = React.createContext()
-// 注意: 不管导入多少次. context.js里面的代码只执行一次.这样就可以断定其他文件中导入context对象和这个context是同一个
-import context from './context'
+import Son from './Son'
+
 export default class App extends Component {
   state = {
-    msg: '默认值'
+    count: 0
+  }
+  handle = () => {
+    this.setState({
+      count: 1
+    })
   }
   render() {
+    console.log('app组件更新了')
     return (
-      <context.Provider value={this.state.msg}>
-        <div>
-          app组件 <Far></Far>
-        </div>
-      </context.Provider>
+      <>
+        <div>app组件</div> <h1>呵呵</h1>
+        <h2>嘿嘿</h2>
+        <Son count={this.state.count}></Son>
+        <button onClick={this.handle}>按钮</button>
+      </>
     )
   }
 }
