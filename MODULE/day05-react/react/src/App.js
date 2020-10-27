@@ -104,6 +104,16 @@ export default class App extends Component {
       todos: newTodos
     })
   }
+
+  // 删除所有完成的事件处理函数
+  delAllDone = () => {
+    let { todos } = this.state
+    let newTodos = [...todos]
+    newTodos = newTodos.filter(item => !item.isDone)
+    this.setState({
+      todos: newTodos
+    })
+  }
   render() {
     // 计算已经完成多少个任务,以及当前总共有多少个任务
     const allTotal = this.state.todos.length
@@ -122,6 +132,7 @@ export default class App extends Component {
             allTotal={allTotal}
             doneTotal={doneTotal}
             updateTodoIsDone={this.updateTodoIsDone}
+            delAllDone={this.delAllDone}
           ></Footer>
         </div>
       </div>

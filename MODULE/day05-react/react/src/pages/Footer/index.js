@@ -6,7 +6,7 @@ export default class Footer extends Component {
     this.props.updateTodoIsDone()
   }
   render() {
-    let { allTotal, doneTotal } = this.props
+    let { allTotal, doneTotal,delAllDone } = this.props
     return (
       <div className='todo-footer'>
         <label>
@@ -19,7 +19,7 @@ export default class Footer extends Component {
         <span>
           <span>已完成{doneTotal}</span> / 全部{allTotal}
         </span>
-        <button className='btn btn-danger'>清除已完成任务</button>
+        <button className='btn btn-danger' onClick={delAllDone}>清除已完成任务</button>
       </div>
     )
   }
