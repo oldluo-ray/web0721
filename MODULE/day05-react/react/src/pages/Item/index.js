@@ -28,6 +28,11 @@ export default class Item extends Component {
     // 需要将要修改的数据的id和最终要修改的值都传递给app组件
     this.props.updateTodo(checked, this.props.todo.id)
   }
+
+  // 删除按钮的点击事件
+  handleDel = () => {
+    this.props.delTodo(this.props.todo.id)
+  }
   render() {
     // console.log(this.props.todo)
 
@@ -46,6 +51,7 @@ export default class Item extends Component {
         <button
           className='btn btn-danger'
           style={{ display: this.state.isShow ? 'block' : 'none' }}
+          onClick={this.handleDel}
         >
           删除
         </button>

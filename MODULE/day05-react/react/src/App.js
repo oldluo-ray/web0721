@@ -23,7 +23,6 @@ export default class App extends Component {
       }
     ]
   }
-
   // 定义一个函数. 专门用来,传递给Header组件,然后让Header组件来调用.
   // header将todoname当做实参传到函数调用里面.这里可以通过形参接收到
   addTodo = todoName => {
@@ -64,12 +63,33 @@ export default class App extends Component {
       todos: newTodos
     })
   }
+
+  // 定义一个函数, 专门用来接收item组件传过来的id,用来删除数据
+  delTodo = id => {
+    // console.log(id)
+    let { todos } = this.state
+
+    let newTodos = [...todos]
+
+    //删除数据
+    newTodos = newTodos.filter(item => {
+      return item.id !== id
+    })
+
+    this.setState({
+      todos: newTodos
+    })
+  }
   render() {
     return (
       <div className='todo-container'>
         <div className='todo-wrap'>
           <Header addTodo={this.addTodo}></Header>
-          <List todos={this.state.todos} updateTodo={this.updateTodo}></List>
+          <List
+            todos={this.state.todos}
+            updateTodo={this.updateTodo}
+            delTodo={this.delTodo}
+          ></List>
           <Footer></Footer>
         </div>
       </div>
