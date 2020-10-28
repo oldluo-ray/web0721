@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import Test from './Test'
+import Cat from './components/Cat'
+import Mouse from './components/Mouse'
 export default class App extends Component {
   render() {
     return (
       <div>
-        <p>1</p>
-        <Test></Test>
-        <div>2</div>
+        <h1>猫抓老鼠</h1>
+        <Mouse></Mouse>
+        <Cat></Cat>
       </div>
     )
   }
