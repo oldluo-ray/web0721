@@ -15,7 +15,7 @@ export default class Counter extends Component {
   }
 
   handleAsync = () => {
-    // 这个asyncInc是一个异步anction. 调用这个函数的时候,值先执行了异步action中返回的那个函数 , 这个函数执行的时候,去执行了异步请求,异步请求成功,才调用dispatch.调用dispatch.reducer才执行
+    // 这个asyncInc是一个异步anction. 调用这个函数的时候,先执行了异步action中返回的那个函数 , 这个函数执行的时候,去执行了异步请求,异步请求成功,才调用dispatch.调用dispatch.reducer才执行
     this.props.asyncInc(3)
   }
   render() {

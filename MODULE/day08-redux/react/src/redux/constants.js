@@ -1,3 +1,1 @@
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-// export const ASYNCINC = 'ASYNCINC'
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'

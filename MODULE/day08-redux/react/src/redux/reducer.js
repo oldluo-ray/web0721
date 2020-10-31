@@ -1,24 +1,14 @@
-import { INCREMENT, DECREMENT, ASYNCINC } from './constants'
+import { GET_USERS_SUCCESS } from './constants'
 let initState = {
-  count: 0,
-  msg: 'hehe',
-  arr: [1, 2, 3]
+  users: []
 }
-export default function reducer(state = initState, action) {
+export default function users(state = initState, action) {
   switch (action.type) {
-    case INCREMENT:
+    case GET_USERS_SUCCESS:
       return {
         ...state,
-        count: state.count + action.data
+        users: action.data
       }
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - action.data
-      }
-    // case ASYNCINC:
-
-    //  return 1
     default:
       return state
   }
