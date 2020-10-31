@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from './constants'
+import { INCREMENT } from './constants'
 let initState = {
   count: 0,
   msg: 'hehe',
@@ -10,11 +10,6 @@ export default function reducer(state = initState, action) {
       return {
         ...state,
         count: state.count + action.data
-      }
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - action.data
       }
     default:
       return state
