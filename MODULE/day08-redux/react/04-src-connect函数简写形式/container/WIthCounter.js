@@ -2,7 +2,7 @@
 //1. 导入connect函数
 import { connect } from 'react-redux'
 import Counter from '../Counter'
-import { inc, dec,asyncInc } from '../redux/actions'
+import { inc, dec } from '../redux/actions'
 // const mapStateToProps = state => {
 //   // return 的这个对象怎么写的.react组件的props里面就是有什么数据
 //   return {
@@ -29,7 +29,7 @@ import { inc, dec,asyncInc } from '../redux/actions'
 const WithCounter = connect(
   state => ({ count: state.count }),
   // mapDispatcToProps
-  { inc, dec,asyncInc}
+  { inc, dec }
 
   /**
    * function inc(num){

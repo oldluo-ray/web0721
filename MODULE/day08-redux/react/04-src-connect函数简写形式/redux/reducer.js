@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, ASYNCINC } from './constants'
+import { INCREMENT, DECREMENT } from './constants'
 let initState = {
   count: 0,
   msg: 'hehe',
@@ -16,9 +16,6 @@ export default function reducer(state = initState, action) {
         ...state,
         count: state.count - action.data
       }
-    // case ASYNCINC:
-
-    //  return 1
     default:
       return state
   }
