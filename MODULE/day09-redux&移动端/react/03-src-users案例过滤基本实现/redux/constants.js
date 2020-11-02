@@ -1,0 +1,2 @@
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'
+export const SET_FILTER = 'SET_FILTER'
