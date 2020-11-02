@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-size: 100%;
+            background-image: url('./imgs/logo.png');
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            .box1 {
+                background-image: url('./imgs/logo@2x.png');
+            }
+        }
+        @media screen and (-webkit-min-device-pixel-ratio: 3) {
+            .box1 {
+                background-image: url('./imgs/logo@3x.png');
+            }
+        }
+        /* .box2 {
+            width: 200px;
+            height: 200px;
+            background-size: 100%;
+            background-image: url('./imgs/logo@2x.png');
+        } */
+    </style>
+</head>
+<body></body>
+    <!-- <img src="./imgs/1.jpg" alt="">
+    <img src="./imgs/微信.svg" alt=""> -->
+    <div class="box1"></div>
+    <!-- <div class="box2"></div> -->
+</body>
+</html>

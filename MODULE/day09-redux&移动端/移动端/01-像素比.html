@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        // console.log(window.devicePixelRatio)
+        const box = document.getElementById('box')
+        const box1 = document.getElementById('box1')
+        box.innerText = '像素比: 设备分辨率(水平方向) / 设备独立像素(水平方向)'
+        box1.innerText = '你的手机的像素比:' + window.devicePixelRatio
+    </script>
+</body>
+</html>
