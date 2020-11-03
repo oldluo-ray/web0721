@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+      }
+      #app {
+        position: relative;
+      }
+      #banner {
+        width: 100%;
+        height: 200px;
+        background-color: orange;
+      }
+      #shade {
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1, 1, 1, 0.5);
+      }
+      h1 {
+        margin-top: 100px;
+      }
+
+      /* a { */
+        /* 让a标签,失去click事件 */
+        /* pointer-events: none;
+      } */
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <a href="https://www.baidu.com">
+        <div id="banner"></div>
+      </a>
+      <!-- <a >
+        <div id="banner"></div>
+      </a> -->
+      <div id="shade">
+        <h1>恭喜，一等奖</h1>
+        <button id="btn">点击关闭</button>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const btn = document.getElementById('btn')
+      const link = document.getElementsByTagName('a')[0]
+      const shade = document.getElementById('shade')
+      btn.addEventListener('touchstart', (e) => {
+        setTimeout(() => {
+          shade.style.display = 'none'
+        }, 400);
+      
+        // e.preventDefault()
+
+        // 300毫秒左右,恢复a标签的click事件
+        // setTimeout(()=>{
+        //   link.style.pointerEvents = 'auto'
+        // }, 400)
+      })
+
+      // link.ontouchstart = function(){
+      //   window.location.href = 'https://www.baidu.com'
+      // }
+    </script>
+  </body>
+</html>

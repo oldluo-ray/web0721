@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box" style="border: 1px solid blue;">
+
+    </div>
+
+    <script>
+        // 需求: 获取box的样式: 
+        // 1. 要获取box的边框的样式 
+        // style只能获取行内样式
+        // console.log(box.style.border)
+        // // 2. 要获取宽度: 
+        // // 只能获取宽/高...
+        // console.log(box.offsetWidth)
+        // // 3. 获取背景颜色
+        // // getComputedStyle这个方法是可以获取元素的所有样式
+        // const styleObj = getComputedStyle(box)
+        // console.log(styleObj.border)
+        // console.log(styleObj.width)
+        // console.log(styleObj.backgroundColor)
+
+
+        //操作类名: 
+            // className 
+            // classList
+        //  box.className += ' one' 
+        // 添加类名  
+        // box.classList.add('one')
+        // box.classList.add('two')
+        // // 移除类名
+        // // box.classList.remove('box')
+        // // 切换类名
+        // box.classList.toggle('box')
+        
+
+    </script>
+</body>
+</html>

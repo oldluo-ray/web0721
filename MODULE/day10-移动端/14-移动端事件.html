@@ -15,14 +15,22 @@
 <body>
     <div id="box"></div>
     <script>
+        let startTime = 0
         box.ontouchstart = function(){
             console.log('手指触摸到屏幕了')
+            startTime = Date.now()
         }
         box.ontouchmove = function(){
             console.log('手指在屏幕上移动')
         }
         box.ontouchend = function(){
             console.log('手指离开屏幕了')
+        }
+
+        box.onclick = function(){
+            console.log('click事件触发了')
+            let endTime = Date.now()
+            console.log(endTime-startTime)
         }
     </script>
 </body>
