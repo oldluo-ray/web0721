@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* .box {
+            width: 9.2rem;
+            height: 4rem;
+            background-color: red;
+            margin: 0.4rem;
+        } */
+    </style>
+
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        // 总结: 
+        // 1. 设备根字体大小 设备独立像素宽度 / 10 
+        // 2. 写样式的时候,用设计高稿的值/根字体大小 单位是rem
+
+        function adapter (){
+            //根字体: 当前设备独立像素宽度 / 10
+            const rootFontSize = document.documentElement.clientWidth / 10
+            document.documentElement.style.fontSize = rootFontSize + 'px'
+        }
+        adapter()
+        window.onresize = adapter
+    </script>
+</body>
+</html>

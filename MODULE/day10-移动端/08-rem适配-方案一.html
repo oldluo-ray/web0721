@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 3.45rem;
+            height: 1.50rem;
+            background-color: red;
+            margin: 0.15rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        //总结: 
+        // 1. 动态蛇者根字体的大小
+        // 2. 写样式的时候,写rem单位. 值是由设计稿的值/100
+
+        function adapter (){
+            // 1. 动态的设置根字体的大小
+            //根字体 = ( 设备横向独立像素值 * 100 )  / 设计稿宽度
+            const rootFontSize = document.documentElement.clientWidth * 100 / 375
+            document.documentElement.style.fontSize = rootFontSize + 'px'
+        }
+        adapter()
+        window.onresize = adapter
+    </script>
+</body>
+</html>

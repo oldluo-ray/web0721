@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 
+            em: 是一个相对单位. 相对谁: 相对的是父元素的font-size的值
+            最终在渲染的时候,单位还是px. 
+            如何计算: em的值 乘以 父元素的font-size
+
+
+            rem: 是一个相对单位. 相对谁: 相对根元素的font-size的值
+            根元素是html 最终渲染的单位也是px
+            如何计算: rem的值 乘以 根元素的font-size
+        
+        
+         */
+
+         html {
+             font-size: 20px;
+         }
+
+         body {
+             font-size: 10px;
+         }
+        .box {
+            width: 10em;
+            height: 10rem;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

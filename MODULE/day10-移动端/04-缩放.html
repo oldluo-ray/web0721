@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+        }
+        div {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./imgs/1.jpg" alt="">
+    <img src="./imgs/2.jpg" alt="">
+    <img src="./imgs/3.jpg" alt="">
+    <img src="./imgs/4.jpg" alt="">
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        //  console.log('pc端的视口',document.documentElement.clientWidth)
+        // // 在pc端,浏览器视口发生变化的时候会触发
+        // window.onresize = function(){
+        //     console.log('pc端的视口',document.documentElement.clientWidth)
+        // }
+
+
+        // 移动端: 
+        // 布局视口不变, 视觉视口变化
+        setInterval(()=>{
+            box.innerText = '移动端布局视口: ' +  document.documentElement.clientWidth
+            box1.innerText = '移动端视觉视口: ' +  window.innerWidth
+        }, 200)
+       
+      
+    </script>
+</body>
+</html>

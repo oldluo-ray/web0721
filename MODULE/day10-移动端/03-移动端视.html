@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 这行代码一写, 在移动端就开启的理想视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 1000px;
+            font-size: 40px;
+        }
+
+         .box {
+            width: 345px;
+            height: 150px;
+            background-color: green;
+            margin: 15px;
+        } 
+    </style>
+</head>
+<body>
+    <!-- <div id="box"></div>
+    <div id="box1"></div> -->
+
+    <div class="box">
+
+    </div>
+    <script>
+      
+        console.log('移动端布局视口的宽度',document.documentElement.clientWidth)
+        // console.log('移动端视觉视口的宽度',window.innerWidth)
+
+        // const box = document.getElementById('box')
+        // const box1 = document.getElementById('box1')
+        // box.innerText = '视觉视口:' + window.innerWidth
+        // box1.innerText = '布局视口:' + document.documentElement.clientWidth
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <!-- initial-scale的值 是 当前设备独立像素宽度 / 布局视口 计算出来 -->
+    <meta name="viewport" content="initial-scale=1.0">
+    <!-- 
+
+        1. width属性的值是多少,就表示当前设备的布局视口是多大
+            1.1 值 device-width 将设备独立像素的宽度设置给布局视口
+            1.2 值 具体的数据 
+        2. initial-scale: 值是一个数字. 也是间接的控制了布局视口的宽度 
+            公式: 当前设备独立像素宽度 / 布局视口 ==> 值
+            注意: width和initial-scale做的事情是一样的.这样写的目的是为了加双保险,保证当前设备的布局视口一定是当前设备独立像素的宽度
+
+
+
+     -->
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    
+    <script>
+       console.log(document.documentElement.clientWidth)
+      
+    </script>
+</body>
+</html>
