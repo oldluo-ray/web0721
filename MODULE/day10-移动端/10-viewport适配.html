@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- ip6: 设备独立像素 375 
+         scale的值: 设备独立像素宽度 / 布局视口的宽度
+
+         ip6p: 设备独立像素 414
+
+         注意: 如果width和initial-scale属性的值冲突,谁的值大,就按照谁来
+
+    -->
+    <meta name="viewport" content="width=375">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+ 
+         .box {
+            width: 345px;
+            height: 150px;
+            background-color: red;
+            margin: 15px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        console.log(document.documentElement.clientWidth)
+    </script>
+</body>
+</html>

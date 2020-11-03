@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 3.45rem;
+            height: 1.50rem;
+            background-color: red;
+            margin: 0.15rem;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        //总结: 
+        // 1. 动态蛇者根字体的大小
+        // 2. 写样式的时候,写rem单位. 值是由设计稿的值/100
+
+        function adapter (){
+            // 1. 动态的设置根字体的大小
+            //根字体 = ( 设备横向独立像素值 * 100 )  / 设计稿宽度
+            const rootFontSize = document.documentElement.clientWidth * 100 / 375
+            document.documentElement.style.fontSize = rootFontSize + 'px'
+        }
+        adapter()
+        window.onresize = adapter
+
+
+        // 动态的修改布局视口
+        // 让布局视口变大,对应的盒子就变小了
+        const viewport = document.querySelector('meta[name=viewport]')
+        const scale = 1 / window.devicePixelRatio
+        viewport.setAttribute('content','width=device-width, initial-scale=' + scale )
+        // 盒子要恢复到原来的样子 ,所以让根标签的字体变大
+        const fontSize = parseInt(document.documentElement.style.fontSize)
+        document.documentElement.style.fontSize = fontSize * window.devicePixelRatio + 'px'
+        // 任何需要处理1px边框的代码,直接写死一个px就可以了
+    </script>
+</body>
+</html>
