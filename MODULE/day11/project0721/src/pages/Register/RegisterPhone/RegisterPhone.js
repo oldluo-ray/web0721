@@ -8,9 +8,10 @@ import {
   WhiteSpace,
   Modal
 } from 'antd-mobile'
-
-import './index.css'
 import { createForm } from 'rc-form'
+
+import { verifyPhone } from '../../../api/register/register'
+import './index.css'
 
 const alert = Modal.alert
 
@@ -52,6 +53,24 @@ class RegisterPhone extends Component {
       isDiabled
     })
   }
+
+  // 点击了按钮之后的事件处理函数
+  handle = () => {
+    // verifyPhone('手机号')
+    // 获取input里面的值
+    // 获取字段为phone的那个表单项的值
+    const phone = this.props.form.getFieldValue('phone')
+    // console.log(phone)
+
+    // 调用方法,发送请求
+    verifyPhone(phone)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   render() {
     // 使用createForm 得到一个高级组件. 这个高阶组件,会自动传入一个form对象给当前这个组件
     // 通过props获取. form对象身上有一个getFieldProps函数,可以帮助我们做表单校验
@@ -88,6 +107,7 @@ class RegisterPhone extends Component {
               type='warning'
               disabled={this.state.isDiabled}
               className='btn'
+              onClick={this.handle}
             >
               下一步
             </Button>
