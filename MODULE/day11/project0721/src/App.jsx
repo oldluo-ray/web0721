@@ -1,15 +1,19 @@
-import React, { Component } from 'react'
-import { Button} from 'antd-mobile';
+import React, { Component , Suspense } from 'react'
+import {routes} from './config/routes'
+import {Route, BrowserRouter as Router} from 'react-router-dom'
 
-// npx create-react-app 项目名称
-// 引入css
-// import './app.css'
+import './app.css'
 export default class App extends Component {
   render() {
     return (
-     <div >
-        <Button type="warning">warning</Button>
-     </div>
+      <Suspense fallback={<div>loading....</div>}>
+        <Router>
+          {routes.map(item=>{
+            return <Route key={item.path} path={item.path} component={item.component} exact={item.exact}></Route>
+          })}
+        
+        </Router>
+    </Suspense>
     )
   }
 }

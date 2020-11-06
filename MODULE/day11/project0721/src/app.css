@@ -2,9 +2,8 @@
   margin: 0;
   padding: 0;
 }
-#box {
-  width: 345px;
-  height: 150px;
-  background-color: red;
-  margin: 15px;
+
+/* 公共样式 */
+.navbar-left {
+  color: black;
 }
