@@ -16,6 +16,9 @@ import React from 'react'
 // </Suspense>
 const Home = React.lazy(() => import('../pages/Home'))
 const Login = React.lazy(() => import('../pages/Login'))
+const RegisterPhone = React.lazy(() =>
+  import('../pages/Register/RegisterPhone/RegisterPhone')
+)
 // 路由表: 根据这个数组,动态的创建Route
 const routes = [
   {
@@ -30,6 +33,10 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/register/phone',
+    component: RegisterPhone
   }
 ]
 

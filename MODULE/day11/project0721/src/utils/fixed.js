@@ -10,3 +10,6 @@ function adapter() {
 
 adapter()
 window.onresize = adapter
+
+
+
