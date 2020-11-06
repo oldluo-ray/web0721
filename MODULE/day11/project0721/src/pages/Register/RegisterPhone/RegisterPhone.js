@@ -6,7 +6,8 @@ import {
   InputItem,
   Button,
   WhiteSpace,
-  Modal
+  Modal,
+  Toast
 } from 'antd-mobile'
 import { createForm } from 'rc-form'
 
@@ -55,7 +56,7 @@ class RegisterPhone extends Component {
   }
 
   // 点击了按钮之后的事件处理函数
-  handle = () => {
+  handle = async () => {
     // verifyPhone('手机号')
     // 获取input里面的值
     // 获取字段为phone的那个表单项的值
@@ -63,13 +64,41 @@ class RegisterPhone extends Component {
     // console.log(phone)
 
     // 调用方法,发送请求
-    verifyPhone(phone)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // verifyPhone(phone)
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+    const res = await verifyPhone(phone)
+    console.log(res)
+    // res.data.success的值为true,表示没有注册过. 否则就是注册过
+    if (res.data.success) {
+      // 没有注册过,可以进入下一个页面
+      alert('', '我们将短信验证码发送到了手机号: ' + phone, [
+        {
+          text: '取消'
+        },
+        {
+          text: '确认',
+          onPress: () => {
+            // 跳转到下一个页面
+            this.props.history.replace('/register/code', {
+              phone
+            })
+          },
+          style: {
+            backgroundColor: 'red',
+            color: '#fff'
+          }
+        }
+      ])
+    } else {
+      // 已经注册过.要提示用户
+      // 后面的数字,表示提示时间 单位是s
+      Toast.fail('手机号已经注册了,请直接登录', 3)
+    }
   }
   render() {
     // 使用createForm 得到一个高级组件. 这个高阶组件,会自动传入一个form对象给当前这个组件
