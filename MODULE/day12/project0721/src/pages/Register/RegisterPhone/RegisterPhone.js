@@ -100,6 +100,11 @@ class RegisterPhone extends Component {
       Toast.fail('手机号已经注册了,请直接登录', 3)
     }
   }
+
+  // 进入到国家/地区界面
+  chooseCountry = () =>{
+    this.props.history.replace('/country')
+  }
   render() {
     // 使用createForm 得到一个高级组件. 这个高阶组件,会自动传入一个form对象给当前这个组件
     // 通过props获取. form对象身上有一个getFieldProps函数,可以帮助我们做表单校验
@@ -109,6 +114,7 @@ class RegisterPhone extends Component {
         <NavBar
           mode='light'
           icon={<Icon type='left' className='navbar-left' />}
+          onLeftClick={()=>this.props.history.replace('/login')}
         >
           硅谷注册登录
         </NavBar>
@@ -124,7 +130,7 @@ class RegisterPhone extends Component {
             clear
             placeholder='请输入手机号'
           >
-            <div className='inp'>
+            <div className='inp' onClick={this.chooseCountry}>
               <span className='inp-span'> +86 </span>
               <Icon type='down'></Icon>
             </div>

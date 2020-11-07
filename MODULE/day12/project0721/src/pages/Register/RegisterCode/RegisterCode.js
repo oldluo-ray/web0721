@@ -95,7 +95,7 @@ class RegisterCode extends Component {
     // console.log(res)
     // 如果请求成功了,就跳转到下一个页面
     if (res.data.success) {
-      this.props.history.replace('/register/code')
+      this.props.history.replace('/register/password')
     }
   }
 
@@ -106,7 +106,7 @@ class RegisterCode extends Component {
         <NavBar
           mode='light'
           icon={<Icon type='left' className='iconleft' />}
-          onLeftClick={() => {}}
+          onLeftClick={()=>this.props.history.replace('/register/phone')}
         >
           硅谷注册
         </NavBar>

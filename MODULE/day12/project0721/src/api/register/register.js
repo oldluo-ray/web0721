@@ -21,3 +21,15 @@ export function verifyCodeApi(phone, code) {
     }
   })
 }
+
+// 注册的函数
+export function register(phone, password) {
+  // 注意: 使用了代理之后,请求路径不要写域名和端口号. 直接写后面的路径就可以
+  return axios('/regist/user', {
+    method: 'POST',
+    data: {
+      phone,
+      password
+    }
+  })
+}

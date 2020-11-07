@@ -22,6 +22,10 @@ const RegisterPhone = React.lazy(() =>
 const RegisterCode = React.lazy(() =>
   import('../pages/Register/RegisterCode/RegisterCode')
 )
+const RegisterPassword = React.lazy(() =>
+  import('../pages/Register/RegisterPassword')
+)
+const Country = React.lazy(() => import('../pages/Country'))
 // 路由表: 根据这个数组,动态的创建Route
 const routes = [
   {
@@ -44,6 +48,14 @@ const routes = [
   {
     path: '/register/code',
     component: RegisterCode
+  },
+  {
+    path: '/register/password',
+    component: RegisterPassword
+  },
+  {
+    path: '/country',
+    component: Country
   }
 ]
 

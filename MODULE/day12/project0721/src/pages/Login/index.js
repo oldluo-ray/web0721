@@ -15,8 +15,7 @@ export default class Login extends Component {
         <NavBar
           mode='light'
           icon={<Icon type='left' className='navbar-left' />}
-
-          // onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => this.props.history.replace('/home')}
           // rightContent={[
           //   <Icon key='0' type='search' style={{ marginRight: '16px' }} />,
           //   <Icon key='1' type='ellipsis' />
