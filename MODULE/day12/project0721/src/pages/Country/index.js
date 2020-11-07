@@ -14,6 +14,8 @@ export default class Country extends Component {
     })
   }
   render() {
+    // 先获取到对象中所有键的数组
+    const keys = Object.keys(this.state.countryData)
     return (
       <div>
         <NavBar
@@ -23,12 +25,33 @@ export default class Country extends Component {
         >
           选择国家或地区
         </NavBar>
-        <List renderHeader={() => '标题'} className='my-list'>
-          <Item extra={885}>Title</Item>
-          <Item extra={'extra content'}>中国</Item>
-          <Item extra={'extra content'}>Title</Item>
-          <Item extra={'extra content'}>Title</Item>
-        </List>
+
+        {/* 遍历所有键的数组,动态创建List */}
+        {keys.map(key => {
+          // 每次遍历的时候,可以通过key,拿到对应的那个数组
+          const arr = this.state.countryData[key]
+          return (
+            <List key={key} renderHeader={() => key} className='my-list'>
+              {/* 遍历数组,动态渲染Item */}
+              {arr.map(item => {
+                //item就是每一个具体要渲染的国家对象
+                // 现在需要获取到国家对象的键.拿到键就可以渲染
+
+                // item ==>{'中国': 86}
+                // ['中国']
+                const itemKey = Object.keys(item)[0]
+
+                const value = item[itemKey]
+
+                return (
+                  <Item key={itemKey} extra={value}>
+                    {itemKey}
+                  </Item>
+                )
+              })}
+            </List>
+          )
+        })}
       </div>
     )
   }
