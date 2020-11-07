@@ -16,6 +16,8 @@ import './index.css'
 
 const alert = Modal.alert
 
+// @withRouter
+@createForm()
 class RegisterPhone extends Component {
   state = {
     isDiabled: true
@@ -160,4 +162,6 @@ class RegisterPhone extends Component {
   }
 }
 
-export default createForm()(RegisterPhone)
+export default RegisterPhone
+
+// withRoouter(createForm()(RegisterPhone))

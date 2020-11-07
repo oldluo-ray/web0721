@@ -122,5 +122,4 @@ class RegisterPassword extends Component {
     )
   }
 }
-
 export default createForm()(RegisterPassword)
