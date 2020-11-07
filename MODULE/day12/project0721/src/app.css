@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 公共样式 */
+.navbar-left {
+  color: black;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.wrap {
+  height: 100%;
+  background-color: #fff;
+}
+
+.inp {
+  display: flex;
+  /* 主轴是水平方向: align-items: center就是垂直居中. 否则就是水平居中 */
+  align-items: center;
+}
+
+.inp-span {
+  margin-right: 5px;
+}
+
+.inp-btn {
+  display: flex;
+  /* 让项目两边对齐 */
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.inp-btn button {
+  border: none;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+  height: 30px;
+  color: #ccc;
+}
+
+.btn {
+  border-radius: 25px !important;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 100px;
+  color: #ccc;
+}
+.line-item {
+  /* 如果有些px值,不希望postcss插件修改,后面加一个注释no就可以了 */
+  border-top: 1px solid #ccc; /*no*/
+  width: 100px;
+}
+
+.other-login {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  margin: 30px auto;
+}
+
+.other-login i {
+  font-size: 40px;
+  /* padding: 10px; */
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+}
+
+.other-login i:nth-child(1) {
+  background-color: rgb(143, 138, 138);
+}
+.other-login i:nth-child(2) {
+  background-color: rgb(137, 214, 147);
+}
+
+.other-login i:nth-child(3) {
+  background-color: rgb(73, 167, 230);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 10px;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  text-align: center;
+}
