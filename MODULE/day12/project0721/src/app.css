@@ -47,6 +47,10 @@ body {
   color: #ccc;
 }
 
+.inp-btn button.active {
+  color: #000;
+}
+
 .btn {
   border-radius: 25px !important;
 }

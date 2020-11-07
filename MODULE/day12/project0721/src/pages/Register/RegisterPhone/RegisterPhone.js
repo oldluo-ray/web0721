@@ -22,6 +22,8 @@ class RegisterPhone extends Component {
   }
   // 当前组件挂载成功就弹出modal窗
   componentDidMount() {
+    //判断一下,是从哪个页面过来的.如果是从country页面过来,就不展示modal.如果不是,就展示modal
+    if (this.props.location.state) return
     alert(
       '注册协议及隐私政策',
       <span>
@@ -102,7 +104,7 @@ class RegisterPhone extends Component {
   }
 
   // 进入到国家/地区界面
-  chooseCountry = () =>{
+  chooseCountry = () => {
     this.props.history.replace('/country')
   }
   render() {
@@ -114,7 +116,7 @@ class RegisterPhone extends Component {
         <NavBar
           mode='light'
           icon={<Icon type='left' className='navbar-left' />}
-          onLeftClick={()=>this.props.history.replace('/login')}
+          onLeftClick={() => this.props.history.replace('/login')}
         >
           硅谷注册登录
         </NavBar>
@@ -131,7 +133,12 @@ class RegisterPhone extends Component {
             placeholder='请输入手机号'
           >
             <div className='inp' onClick={this.chooseCountry}>
-              <span className='inp-span'> +86 </span>
+              <span className='inp-span'>
+                +{' '}
+                {this.props.location.state
+                  ? this.props.location.state.value
+                  : 86}
+              </span>
               <Icon type='down'></Icon>
             </div>
           </InputItem>

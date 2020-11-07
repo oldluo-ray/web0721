@@ -1,0 +1,19 @@
+.country-container {
+  width: 375px;
+  /* padding-right: 30px; */
+}
+
+.country-container .am-list-body {
+  padding-right: 30px;
+}
+.country-navbar {
+  position: fixed;
+  width: 30px;
+  top: 88px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 999999999999;
+  /* 当主轴是垂直方向. align-items:center就变成了水平居中 */
+  align-items: center;
+}

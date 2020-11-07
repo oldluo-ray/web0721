@@ -8,8 +8,36 @@ import {
   WhiteSpace
 } from 'antd-mobile'
 import { Link } from 'react-router-dom'
-export default class Login extends Component {
+import { createForm } from 'rc-form'
+
+import { sendCode } from '../../api/login/login'
+class Login extends Component {
+  state = {
+    isBtnActive: false
+  }
+
+  // 验证手机号
+  validatorPhone = (rules, value, cb) => {
+    let isBtnActive = false
+    if (/^1[3456789]\d{9}$/.test(value)) {
+      isBtnActive = true
+    }
+
+    this.setState({
+      isBtnActive
+    })
+  }
+  // 发送验证码
+  sendCodeFn = async () => {
+    // 判断一下,当前获取验证码按钮,是否高亮
+    if (this.state.isBtnActive) {
+      // 这时才发送请求
+      await sendCode(this.props.form.getFieldValue('phone'))
+      // 只要这里的代码可以执行,说明这次请求时成功的
+    }
+  }
   render() {
+    const { getFieldProps } = this.props.form
     return (
       <div className='wrap'>
         <NavBar
@@ -25,7 +53,17 @@ export default class Login extends Component {
         </NavBar>
 
         <WingBlank>
-          <InputItem clear placeholder='请输入手机号'>
+          <InputItem
+            {...getFieldProps('phone', {
+              rules: [
+                {
+                  validator: this.validatorPhone
+                }
+              ]
+            })}
+            clear
+            placeholder='请输入手机号'
+          >
             <div className='inp'>
               <span className='inp-span'> +86 </span>
               <Icon type='down'></Icon>
@@ -34,7 +72,12 @@ export default class Login extends Component {
 
           <div className='inp-btn'>
             <InputItem clear placeholder='请输入手机验证码'></InputItem>
-            <button>获取验证码</button>
+            <button
+              className={this.state.isBtnActive ? 'active' : ''}
+              onClick={this.sendCodeFn}
+            >
+              获取验证码
+            </button>
           </div>
           <WhiteSpace size='xl' />
           <WingBlank>
@@ -70,3 +113,5 @@ export default class Login extends Component {
     )
   }
 }
+
+export default createForm()(Login)
