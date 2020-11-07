@@ -10,10 +10,11 @@ import {
 import { Link } from 'react-router-dom'
 import { createForm } from 'rc-form'
 
-import { sendCode } from '../../api/login/login'
+import { sendCode, loginPhone } from '../../api/login/login'
 class Login extends Component {
   state = {
-    isBtnActive: false
+    isBtnActive: false,
+    isCodeActive: false
   }
 
   // 验证手机号
@@ -27,6 +28,17 @@ class Login extends Component {
       isBtnActive
     })
   }
+
+  validatorCode = (rules, value, cb) => {
+    let isCodeActive = false
+    if (/^[\d]{6}$/.test(value)) {
+      isCodeActive = true
+    }
+
+    this.setState({
+      isCodeActive
+    })
+  }
   // 发送验证码
   sendCodeFn = async () => {
     // 判断一下,当前获取验证码按钮,是否高亮
@@ -35,6 +47,23 @@ class Login extends Component {
       await sendCode(this.props.form.getFieldValue('phone'))
       // 只要这里的代码可以执行,说明这次请求时成功的
     }
+  }
+
+  // 手机快速登录的事件处理函数
+  login = async () => {
+    const phone = this.props.form.getFieldValue('phone')
+    const code = this.props.form.getFieldValue('code')
+    const res = await loginPhone(phone, code)
+    console.log(res)
+    if (res.data.success) {
+      this.props.history.replace('/home')
+    }
+  }
+
+  // 使用git进行第三方授权登录
+  loginOauth = () => {
+    // 通过给window.location.href赋值一个url地址,可以实现,修改浏览器地址栏的地址,并且发送请求
+    window.location.href = 'https://github.com/login/oauth/authorize?client_id=480a8df28c2d636df635'
   }
   render() {
     const { getFieldProps } = this.props.form
@@ -71,7 +100,17 @@ class Login extends Component {
           </InputItem>
 
           <div className='inp-btn'>
-            <InputItem clear placeholder='请输入手机验证码'></InputItem>
+            <InputItem
+              {...getFieldProps('code', {
+                rules: [
+                  {
+                    validator: this.validatorCode
+                  }
+                ]
+              })}
+              clear
+              placeholder='请输入手机验证码'
+            ></InputItem>
             <button
               className={this.state.isBtnActive ? 'active' : ''}
               onClick={this.sendCodeFn}
@@ -81,7 +120,12 @@ class Login extends Component {
           </div>
           <WhiteSpace size='xl' />
           <WingBlank>
-            <Button type='warning' disabled className='btn'>
+            <Button
+              type='warning'
+              disabled={!(this.state.isBtnActive && this.state.isCodeActive)}
+              className='btn'
+              onClick={this.login}
+            >
               登录
             </Button>
             <WhiteSpace size='xl' />
@@ -99,7 +143,7 @@ class Login extends Component {
           </div>
 
           <div className='other-login'>
-            <i className='iconfont icon-github'></i>
+            <i className='iconfont icon-github' onClick={this.loginOauth}></i>
             <i className='iconfont icon-wechat'></i>
             <i className='iconfont icon-qq'></i>
           </div>

@@ -10,3 +10,14 @@ export function sendCode(phone) {
     }
   })
 }
+
+// 登录的方法
+export function loginPhone(phone, code) {
+  return axios('/login/phone', {
+    method: 'POST',
+    data: {
+      phone,
+      code
+    }
+  })
+}
